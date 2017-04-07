@@ -1,0 +1,6 @@
+<h1>Add product</h1>
+
+<%= form_for [:admin, @store, @product_store] do |f| %>
+    <%= f.select(:product_id, Product.all.collect {|a| [a.name, a.id]})%>
+    <%= f.submit "Add" %>
+<% end %>

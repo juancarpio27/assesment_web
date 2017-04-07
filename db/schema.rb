@@ -10,16 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406213628) do
+ActiveRecord::Schema.define(version: 20170407015638) do
+
+  create_table "product_stores", force: :cascade do |t|
+    t.integer  "store_id",   null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "price",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stores", force: :cascade do |t|
-    t.string   "name",         null: false
-    t.string   "address",      null: false
-    t.time     "opening_hour", null: false
-    t.time     "closing_hour", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "name",                 null: false
+    t.string   "address",              null: false
+    t.time     "opening_hour",         null: false
+    t.time     "closing_hour",         null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "phone"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
 end

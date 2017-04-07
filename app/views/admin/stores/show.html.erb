@@ -3,4 +3,7 @@
 <%= @store.name %>
 <%= @store.address %>
 
+<%= image_tag @store.picture.url(:thumb)  %>
+
+
 <%= link_to 'Back', admin_stores_path %>

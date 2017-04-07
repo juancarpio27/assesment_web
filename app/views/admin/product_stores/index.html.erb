@@ -1,0 +1,8 @@
+<h1>Productos de la tienda</h1>
+
+<% @product_stores.each do |product_store| %>
+    <%= product_store.product.name %>
+    <%= product_store.product.price %>$
+<% end %>
+
+<%= link_to 'Add product', new_admin_store_product_store_path(@store) %>

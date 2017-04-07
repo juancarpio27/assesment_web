@@ -46,7 +46,7 @@ class Admin::StoresController < AdminController
   protected
 
   def store_params
-    params.require(:store).permit(:name, :address, :closing_hour, :opening_hour, :phone)
+    params.require(:store).permit(:name, :address, :closing_hour, :opening_hour, :phone, :picture)
   end
 
 end
