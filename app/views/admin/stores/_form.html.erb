@@ -1,0 +1,19 @@
+<%= form_for [:admin, @store] do |f| %>
+
+    <label>Name</label>
+    <%= f.text_field :name %>
+
+    <label>Address</label>
+    <%= f.text_field :address %>
+
+    <label>Opening hour</label>
+    <%= f.text_field :opening_hour %>
+
+    <label>Closing hour</label>
+    <%= f.text_field :closing_hour %>
+
+    <label>Phone</label>
+    <%= f.text_field :phone %>
+
+    <%= f.submit 'Save' %>
+<% end %>

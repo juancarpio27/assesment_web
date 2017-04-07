@@ -2,4 +2,9 @@
 
 <% @stores.each do |store| %>
     <p><%= store.name %></p>
+    <%= link_to 'Details', admin_store_path(store) %>
+    <%= link_to 'Edit', edit_admin_store_path(store) %>
+    <%= link_to 'Delete', admin_store_path(store), method: :delete%>
 <% end %>
+
+<%= link_to 'Add store', new_admin_store_path %>
