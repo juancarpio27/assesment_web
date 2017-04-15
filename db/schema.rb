@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407015638) do
+ActiveRecord::Schema.define(version: 20170415212059) do
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "access_token"
+    t.integer  "user_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "holder_name",      limit: 120, null: false
+    t.string   "number",           limit: 4,   null: false
+    t.integer  "expiration_month",             null: false
+    t.integer  "expiration_year",              null: false
+    t.string   "brand",            limit: 75,  null: false
+    t.integer  "user_id",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
 
   create_table "product_stores", force: :cascade do |t|
     t.integer  "store_id",   null: false
@@ -26,6 +46,17 @@ ActiveRecord::Schema.define(version: 20170407015638) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer  "platform",   limit: 1, null: false
+    t.datetime "deleted_at"
+    t.integer  "user_id",              null: false
+    t.integer  "api_key_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["api_key_id"], name: "index_sessions_on_api_key_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string   "name",                 null: false
     t.string   "address",              null: false
@@ -38,6 +69,26 @@ ActiveRecord::Schema.define(version: 20170407015638) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "name"
+    t.string   "lastname"
+    t.integer  "points"
+    t.integer  "sex"
+    t.integer  "age"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
