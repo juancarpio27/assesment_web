@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   has_many :api_keys
   has_many :sessions
+  has_many :cards
 
   def set_points
     points = 0
