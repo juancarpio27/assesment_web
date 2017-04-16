@@ -5,7 +5,7 @@ class Order < ApplicationRecord
 
   has_many :product_orders
 
-  enum status: [:received, :canceled, :received]
+  enum order_status: [:received, :canceled, :delivered]
   enum method: [:card, :points, :cash]
 
 end
