@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   module Json
     SHOW = {
-        only: [:id, :name, :lastname, :email, :sex, :age, :points]
+        only: [:id, :name, :lastname, :email, :sex, :age, :points],
+        methods: [:access_token]
     }
   end
 
@@ -26,6 +27,10 @@ class User < ApplicationRecord
 
   def set_points
     self.points = 0
+  end
+
+  def access_token
+    api_keys.first.nil? ? nil : api_keys.last.access_token
   end
 
 end
