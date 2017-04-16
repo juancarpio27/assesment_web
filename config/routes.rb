@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :stores, only: [:index, :show]
     resources :users, only: [:create]
+    resources :categories, only: [:index]
 
     resource :sessions, only: [:destroy] do
       collection {
