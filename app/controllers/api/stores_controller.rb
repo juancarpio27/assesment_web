@@ -7,7 +7,7 @@ class Api::StoresController < ApiController
 
   def show
     @store = Store.find(params[:id])
-    render json @store.as_json
+    render json: @store.as_json
   end
 
 end
