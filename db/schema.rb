@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416211643) do
+ActiveRecord::Schema.define(version: 20170416234505) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20170416211643) do
     t.string   "name",       limit: 120, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string   "description"
+    t.string   "image"
+    t.datetime "expiration"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "orders", force: :cascade do |t|
