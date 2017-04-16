@@ -22,6 +22,11 @@ class Api::OrdersController < ApiController
     render json: @orders.as_json(Order::Json::LIST)
   end
 
+  def show
+    @order = @api_key.user.orders.find(params[:id])
+    render json: @order.as_json(Order::Json::SHOW)
+  end
+
   def order_params
     params.require(:order).permit(:store_id, :order_status, :price, :pickup, :method, :card_id)
   end

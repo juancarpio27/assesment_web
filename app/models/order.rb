@@ -15,6 +15,14 @@ class Order < ApplicationRecord
             }
         }
     }
+    SHOW = {
+        methods: [:store],
+        include: {
+            product_orders:{
+                methods: [:product]
+            }
+        }
+    }
   end
 
   enum order_status: [:received, :canceled, :delivered]

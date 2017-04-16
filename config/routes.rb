@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       }
     end
 
-    resources :orders, only: [:create,:index]
+    resources :orders, only: [:create,:index,:show]
 
     resource :sessions, only: [:destroy] do
       collection {
