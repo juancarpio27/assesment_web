@@ -22,9 +22,10 @@ class User < ApplicationRecord
   validates :lastname, presence: true, length: {in: 2..90}
   validates :age, presence: true
   validates :sex, presence: true
+  validates :email, presence: true, uniqueness: true
 
   def set_points
-    points = 0
+    self.points = 0
   end
 
 end
