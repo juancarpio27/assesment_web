@@ -10,7 +10,7 @@ class Api::OrdersController < ApiController
       products.each do |product|
         @order.product_orders.create(product_id: product[:id], quantity: product[:quantity])
       end
-      render json: @order.as_json(methods: [:user])
+      render json: @order.as_json(Order::Json::CREATE)
     else
       render json: {errors: @order.errors.full_messages }, status: 422
     end

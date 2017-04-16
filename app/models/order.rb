@@ -23,6 +23,14 @@ class Order < ApplicationRecord
             }
         }
     }
+
+    CREATE = {
+        include: {
+            user:{
+                methods: [:access_token]
+            }
+        }
+    }
   end
 
   enum order_status: [:received, :canceled, :delivered]
