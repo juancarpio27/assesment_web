@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     resources :stores, only: [:index, :show]
     resources :users, only: [:create]
     resources :categories, only: [:index]
+    resources :product_stores, only: [] do
+      collection {
+        post 'get_products_by_category'
+      }
+    end
 
     resource :sessions, only: [:destroy] do
       collection {

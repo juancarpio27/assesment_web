@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416152551) do
+ActiveRecord::Schema.define(version: 20170416154252) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(version: 20170416152551) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "price",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.integer  "price",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
 
   create_table "sessions", force: :cascade do |t|
