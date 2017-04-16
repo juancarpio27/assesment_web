@@ -35,4 +35,10 @@ class User < ApplicationRecord
     api_keys.first.nil? ? nil : api_keys.last.access_token
   end
 
+  def update_points(price)
+    points = price.to_i
+    self.points = self.points + points
+    self.save!
+  end
+
 end
