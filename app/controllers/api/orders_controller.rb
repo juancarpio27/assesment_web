@@ -17,6 +17,11 @@ class Api::OrdersController < ApiController
     end
   end
 
+  def index
+    @orders = @api_key.user.orders
+    render json: @order.as_json(Order::Json::LIST)
+  end
+
   def order_params
     params.require(:order).permit(:store_id, :order_status, :price, :pickup, :method, :card_id)
   end
