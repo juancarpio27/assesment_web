@@ -5,6 +5,12 @@ class Api::OrdersController < ApiController
   def create
     @order = @api_key.user.orders.create(order_params)
     if @order.save
+
+      products = params[:products][:products]
+      products.each do |product|
+        @order.product_orders.create(product_id: product.id, quantity: product.quantity)
+      end
+
       render json: @order.as_json
     else
       render json: {errors: @order.errors.full_messages }, status: 422
