@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   enum method: [:card, :points, :cash]
 
   before_create :set_received
-  
+
   def set_received
     self.received = DateTime.now
   end
