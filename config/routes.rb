@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       }
     end
 
+    resources :orders, only: [:create]
+
     resource :sessions, only: [:destroy] do
       collection {
         post 'plain'

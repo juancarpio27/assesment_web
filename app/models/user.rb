@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :sessions
   has_many :cards
 
+  has_many :orders
+
   validates :name, presence: true, length: {in: 2..75}
   validates :lastname, presence: true, length: {in: 2..90}
   validates :age, presence: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416161919) do
+ActiveRecord::Schema.define(version: 20170416210837) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -36,6 +36,27 @@ ActiveRecord::Schema.define(version: 20170416161919) do
     t.string   "name",       limit: 120, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "store_id",   null: false
+    t.integer  "status",     null: false
+    t.integer  "price",      null: false
+    t.datetime "pickup",     null: false
+    t.datetime "received"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "card_id"
+    t.integer  "method"
+  end
+
+  create_table "product_orders", force: :cascade do |t|
+    t.integer  "product_id", null: false
+    t.integer  "order_id",   null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_stores", force: :cascade do |t|
