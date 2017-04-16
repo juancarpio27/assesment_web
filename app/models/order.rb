@@ -8,4 +8,10 @@ class Order < ApplicationRecord
   enum order_status: [:received, :canceled, :delivered]
   enum method: [:card, :points, :cash]
 
+  before_create :set_received
+  
+  def set_received
+    self.received = DateTime.now
+  end
+
 end

@@ -12,7 +12,7 @@ class Api::OrdersController < ApiController
   end
 
   def order_params
-    params.require(:order).permit(:store_id, :status, :price, :pickup)
+    params.require(:order).permit(:store_id, :order_status, :price, :pickup, :method)
   end
 
 
