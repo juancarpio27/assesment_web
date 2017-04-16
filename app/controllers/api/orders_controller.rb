@@ -18,10 +18,8 @@ class Api::OrdersController < ApiController
   end
 
   def index
-    puts 'EMAILLLLL'
-    puts(@api_key.user.email)
     @orders = @api_key.user.orders
-    render json: @order.as_json(Order::Json::LIST)
+    render json: @orders.as_json(Order::Json::LIST)
   end
 
   def order_params
