@@ -8,7 +8,7 @@ class Api::OrdersController < ApiController
 
       products = params[:products][:products]
       products.each do |product|
-        @order.product_orders.create(product_id: product.id, quantity: product.quantity)
+        @order.product_orders.create(product_id: product[:id], quantity: product[:quantity])
       end
 
       render json: @order.as_json
