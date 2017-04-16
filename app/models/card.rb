@@ -13,5 +13,5 @@ class Card < ApplicationRecord
   def sanitize_params
     self.number = self.number.last(4)
   end
-  
+
 end

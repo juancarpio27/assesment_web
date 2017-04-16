@@ -18,6 +18,11 @@ class User < ApplicationRecord
   has_many :sessions
   has_many :cards
 
+  validates :name, presence: true, length: {in: 2..75}
+  validates :lastname, presence: true, length: {in: 2..90}
+  validates :age, presence: true
+  validates :sex, presence: true
+
   def set_points
     points = 0
   end
