@@ -8,7 +8,11 @@ class Order < ApplicationRecord
 
   module Json
     LIST = {
-        methods: [:products]
+        include: {
+            product_orders:{
+                methods: [:product]
+            }
+        }
     }
   end
 
