@@ -87,5 +87,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {:host => 'https://murmuring-caverns-11160.herokuapp.com'}
 
+  config.action_mailer.smtp_settings = {
+      :user_name => ENV["EMAIL"],
+      :password => ENV["PASSWORD"],
+      :address => 'smtp.gmail.com',
+      :domain => 'gymrein.herokuapp.com',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
+
 
 end
