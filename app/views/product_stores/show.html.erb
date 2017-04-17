@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <h4>Product details</h4>
+    <h5>Store number: <%= @store.id %> / Store name: <%= @store.name %></h5>
+
+    <table class="table table-striped">
+      <tr>
+        <td>Product name</td>
+        <td><%= @product_store.product.name %></td>
+      </tr>
+      <tr>
+        <td>Product price</td>
+        <td><%= @product_store.product.price %></td>
+      </tr>
+      <tr>
+        <td>Product quantity</td>
+        <td><%= @product_store.quantity %></td>
+      </tr>
+    </table>
+
+    <%= link_to "Back", store_product_stores_path(@store), class: 'btn btn-info' %>
+
+  </div>
+</div>

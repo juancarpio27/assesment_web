@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+  devise_for :employees
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'landing#welcome'
+  devise_scope :employee do
+    root to: "devise/sessions#new"
+  end
+
+  resources :stores, only: [:show] do
+    resources :product_stores
+  end
+
 
   namespace :api do
     resources :stores, only: [:index, :show]
@@ -24,7 +32,6 @@ Rails.application.routes.draw do
     end
 
     resources :cards, only: [:index, :create, :destroy]
-
   end
 
 end
