@@ -1,0 +1,75 @@
+<h4>Today orders: <%= (Time.now - 5.hours).strftime('%m-%d-%y') %></h4>
+<h5>Store number: <%= @store.id %> / Store name: <%= @store.name %></h5>
+
+<h5>Order number: <%= @order.id %></h5>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="well">
+      <h4>Pickup information</h4>
+
+      <table class="table table-striped">
+        <tr>
+          <td>Client name: </td>
+          <td><%= @order.user.name %> <%= @order.user.lastname %></td>
+        </tr>
+        <tr>
+          <td>Pickup time: </td>
+          <td><%= @order.pickup.strftime('%H:%M') %></td>
+        </tr>
+        <tr>
+          <td>Payment method: </td>
+          <td><%= @order.method %></td>
+        </tr>
+        <tr>
+          <td>Total: </td>
+          <td><%= @order.price %></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  <div class="col-md-4">
+    <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=<%= @order.id %>&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" width="200" height="200" />
+    <%if @order.received? %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= button_to 'Delivered', deliver_store_order_path(@store,@order), class: 'btn btn-primary btn-block' %>
+          </div>
+          <div class="col-md-6">
+            <%= button_to 'Cancel', cancel_store_order_path(@store,@order), class: 'btn btn-danger btn-block' %>
+          </div>
+        </div>
+    <% else %>
+        <div class="well">
+          <h4>Pickup time:</h4>
+          <%= @order.received %>
+        </div>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="well">
+      <h4>Products</h4>
+      <table class="table table-striped">
+        <tr>
+          <th>Number: </th>
+          <th>Name: </th>
+          <th>Price: </th>
+          <th>Quantity: </th>
+        </tr>
+        <% @order.product_orders.each do |product_order| %>
+            <tr>
+              <td><%= product_order.product.id %></td>
+              <td><%= product_order.product.name %></td>
+              <td><%= product_order.product.price %></td>
+              <td><%= product_order.quantity %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

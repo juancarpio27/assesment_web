@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   resources :stores, only: [:show] do
     resources :product_stores
+    resources :orders do
+      member do
+        post 'deliver'
+        post 'cancel'
+      end
+    end
   end
 
 
@@ -23,6 +29,7 @@ Rails.application.routes.draw do
     end
 
     resources :orders, only: [:create,:index,:show]
+
     resources :offers, only: [:index]
 
     resource :sessions, only: [:destroy] do

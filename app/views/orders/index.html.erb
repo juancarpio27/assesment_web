@@ -1,0 +1,36 @@
+<h4>Today orders: <%= (Time.now - 5.hours).strftime('%m-%d-%y') %></h4>
+<h5>Store number: <%= @store.id %> / Store name: <%= @store.name %></h5>
+
+<h5>Pending orders</h5>
+
+<table class="table table-striped">
+  <tr>
+    <th>Reservation ID</th>
+    <th>Pickup Time</th>
+    <th></th>
+  </tr>
+  <% @orders.received.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.pickup %></td>
+      <td><%= link_to 'Details', store_order_path(@store,order), class: 'btn btn-info' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h5>Completed orders</h5>
+
+<table class="table table-striped">
+  <tr>
+    <th>Reservation ID</th>
+    <th>Pickup Time</th>
+    <th></th>
+  </tr>
+  <% @orders.delivered.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.pickup %></td>
+        <td><%= link_to 'Details', store_order_path(@store,order), class: 'btn btn-info' %></td>
+      </tr>
+  <% end %>
+</table>
