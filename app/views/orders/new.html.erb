@@ -1,0 +1,40 @@
+<h3>New Order</h3>
+<h5>Store number: <%= @store.id %> / Store name: <%= @store.name %></h5>
+
+<%= nested_form_for [@store,@order] do |order_form| %>
+
+    <div class="form-group">
+        <%= order_form.text_field :user_id, {class: 'form-control', placeholder: "User code"} %>
+    </div>
+
+    <div class="form-group">
+      <%= order_form.select :method, options_for_select(Order.methods.map {|k,v| [k,k]}), {}, {class: 'form-control'} %>
+    </div>
+
+    <h5>Products</h5>
+
+    <%= order_form.fields_for :product_orders do |product_orders_form| %>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+              <%= product_orders_form.text_field :product_id, {class: 'form-control', placeholder: "Product Code"} %>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <%= product_orders_form.text_field :quantity, {class: 'form-control', placeholder: "Quantity"} %>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <%= product_orders_form.link_to_remove 'Remove', class: 'btn btn-danger' %>
+          </div>
+        </div>
+
+
+    <% end %>
+    <%= order_form.link_to_add "Add a product", :product_orders, class: 'btn btn-success' %>
+
+
+    <%= order_form.submit 'Create Order', class: 'btn btn-primary' %>
+
+<% end %>

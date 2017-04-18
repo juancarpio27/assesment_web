@@ -1,5 +1,14 @@
-<h4>Today orders: <%= (Time.now - 5.hours).strftime('%m-%d-%y') %></h4>
-<h5>Store number: <%= @store.id %> / Store name: <%= @store.name %></h5>
+<div class="row">
+  <div class="col-md-8">
+    <h4>Today orders: <%= (Time.now - 5.hours).strftime('%m-%d-%y') %></h4>
+    <h5>Store number: <%= @store.id %> / Store name: <%= @store.name %></h5>
+  </div>
+  <div class="col-md-4">
+    <%= link_to 'Create Order', new_store_order_path(@store), class: 'btn btn-warning' %>
+  </div>
+</div>
+
+
 
 <h5>Pending orders</h5>
 

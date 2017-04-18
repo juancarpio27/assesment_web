@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417020347) do
+ActiveRecord::Schema.define(version: 20170418235612) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -115,17 +115,19 @@ ActiveRecord::Schema.define(version: 20170417020347) do
   end
 
   create_table "stores", force: :cascade do |t|
-    t.string   "name",                 null: false
-    t.string   "address",              null: false
-    t.time     "opening_hour",         null: false
-    t.time     "closing_hour",         null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "name",                                         null: false
+    t.string   "address",                                      null: false
+    t.time     "opening_hour",                                 null: false
+    t.time     "closing_hour",                                 null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "phone"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.decimal  "longitude",            precision: 8, scale: 6
+    t.decimal  "latitude",             precision: 8, scale: 6
   end
 
   create_table "users", force: :cascade do |t|

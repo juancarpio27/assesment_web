@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 
+gem "nested_form"
+
 gem "twitter-bootstrap-rails"
 
 # Use Capistrano for deployment
