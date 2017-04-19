@@ -28,6 +28,12 @@ Rails.application.routes.draw do
       }
     end
 
+    resources :offer_stores, only: [] do
+      collection {
+        get 'get_last_promotion'
+      }
+    end
+
     resources :orders, only: [:create,:index,:show]
 
     resources :offers, only: [:index]
