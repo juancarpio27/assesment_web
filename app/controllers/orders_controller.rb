@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order = @store.orders.build(order_params)
     @order.order_status = 'delivered'
     @order.pickup = Time.now - 5.hours
-    @order.price = 100
+    @order.price = @order.calculate_total
     @order.received = Time.now - 5.hours
     if @order.save
       redirect_to store_orders_path(@store)

@@ -44,4 +44,12 @@ class Order < ApplicationRecord
     self.received = DateTime.now
   end
 
+  def calculate_total
+    price = 0
+    self.product_orders.each do |p|
+      price += p.quantity * p.product.price
+    end
+    price
+  end
+
 end

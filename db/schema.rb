@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419003744) do
+ActiveRecord::Schema.define(version: 20170422175346) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -120,6 +120,23 @@ ActiveRecord::Schema.define(version: 20170419003744) do
     t.datetime "updated_at",           null: false
     t.index ["api_key_id"], name: "index_sessions_on_api_key_id"
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "shipment_stores", force: :cascade do |t|
+    t.integer  "shipment_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "shipments", force: :cascade do |t|
+    t.integer  "store_id"
+    t.integer  "shipment_status"
+    t.datetime "requested"
+    t.datetime "received"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "stores", force: :cascade do |t|

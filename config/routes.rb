@@ -15,6 +15,11 @@ Rails.application.routes.draw do
         post 'cancel'
       end
     end
+    resources :shipments do
+      member do
+        post 'deliver'
+      end
+    end
   end
 
 

@@ -6,6 +6,24 @@
       <h4>Employee number: <%= current_employee.id %></h4>
       <p><%= current_employee.name %> <%= current_employee.lastname %></p>
     </div>
+    <div class="well">
+      <h4>Today data</h4>
+      Date: <%= (Time.now - 5.hours).strftime('%m-%d-%y') %>
+      <table class="table table-striped">
+        <tr>
+          <td>Orders received</td>
+          <td><%= @store.today_orders.count %></td>
+        </tr>
+        <tr>
+          <td>Shipments received</td>
+          <td><%= @store.today_shipments.count %></td>
+        </tr>
+        <tr>
+          <td>Money received</td>
+          <td><%= @store.today_orders.sum(:price) %></td>
+        </tr>
+      </table>
+    </div>
   </div>
   <div class="col-md-6">
     <div class="well">
@@ -15,6 +33,6 @@
       <p>Closing hour: <%= @store.closing_hour.strftime('%H:%M') %></p>
     </div>
   </div>
-
 </div>
+
 
