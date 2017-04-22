@@ -1,4 +1,4 @@
-class Api::OfferStoresController < ApplicationController
+class Api::OfferStoresController < ApiController
 
   before_action :assert_user
 
