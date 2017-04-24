@@ -1,5 +1,10 @@
+<body class="imagebg">
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+
+    <img class="img-responsive img-center" src="http://vignette3.wikia.nocookie.net/logopedia/images/b/b4/7-Eleven-Logo.PNG/revision/latest/scale-to-width-down/2000?cb=20140919030649" width="500"/>
+    <br>
 
     <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
@@ -10,7 +15,7 @@
 
     <div class="well">
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email %><br />
             <%= f.email_field :email, {class: 'form-control', placeholder: "Email", autofocus: true} %>
@@ -24,11 +29,13 @@
           <div class="actions">
             <%= f.submit "Log in", class: 'btn btn-primary' %>
           </div>
-        <% end %>
+      <% end %>
 
-      </div>
-        <%= render "devise/shared/links" %>
     </div>
+    <%= render "devise/shared/links" %>
   </div>
+</div>
+</body>
+
 
 

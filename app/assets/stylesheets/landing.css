@@ -8,6 +8,11 @@ body {
     margin-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+.imagebg {
+    background-image: url("http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/tokyo-mud-bath-bar-mudbath0716.jpg?itok=dJ8lDXJh");
+    background-size: cover;
+}
+
 .header-image {
     display: block;
     width: 100%;
