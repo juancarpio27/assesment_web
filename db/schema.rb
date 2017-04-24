@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422214937) do
+ActiveRecord::Schema.define(version: 20170424183102) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170422214937) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "user_id",      null: false
+    t.integer  "user_id"
     t.integer  "store_id",     null: false
     t.integer  "order_status", null: false
     t.integer  "price",        null: false

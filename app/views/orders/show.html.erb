@@ -8,6 +8,7 @@
     <div class="well">
       <h4>Pickup information</h4>
 
+      <% if @order.user %>
       <table class="table table-striped">
         <tr>
           <td>Client name: </td>
@@ -26,7 +27,9 @@
           <td><%= @order.price %></td>
         </tr>
       </table>
-
+          <% else %>
+      <p>No user registered for this order</p>
+          <% end %>
     </div>
   </div>
   <div class="col-md-4">
